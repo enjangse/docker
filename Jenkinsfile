@@ -1,5 +1,11 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image 'arg'
+      args '-u root -v /var/run/docker.sock:/var/run/docker.sock'
+    }
+    
+  }
   stages {
     stage('create-docker-image') {
       steps {
